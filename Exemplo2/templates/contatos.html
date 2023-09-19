@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<hr>
+<form action="{{url_for('contatos')}}" method="POST">
+    <label for="nomecontato">Nome:</label>
+    <input type="text" name="nomecontato" required="true"/>
+    <label for="numero">Número:</label>
+    <input type="text" name="numero" required="true">
+    <button>Adicionar contato</button>
+</form>
+
+{% for contatos in listacontatos %}
+<details>
+    <summary>
+        <span class="nomecontato">{{contatos.nomecontato}}</span>
+        <span class="numerospan">{{contatos.numero}}</span>
+    </summary>
+    <button class="copiar">Copiar número</button>
+</details>
+{% endfor %}
+
+<script type="text/javascript">
+const copiar = document.querySelectorAll('.copiar');
+
+copiar.forEach(botao => {
+    botao.addEventListener('click', () => {
+        const nomecontato = botao.parentElement.querySelector('.nomecontato').textContent;
+        const numero = botao.parentElement.querySelector('.numerospan').textContent;
+        if (numero) {
+            navigator.clipboard.writeText(numero).then(() => {
+                alert('Número copiado: ' + numero);
+            }).catch(err => {
+                console.error('Erro ao copiar número: ' + err);
+            });
+        }
+    });
+});
+
+
+</script>
+{% endblock conteudo %}

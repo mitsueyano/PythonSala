@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<hr>
+    <p>Insira os itens necessários:</p>
+    <form action="{{url_for('principal')}}" method="POST">
+        <input type="text" name="itens_acamp" required="true"/>
+        <button>Adicionar</button>
+    </form>
+    <ol>
+        {% for itens_acamp in listaitens_acamp %}
+        <li>{{itens_acamp}}</li>
+        {% endfor %}
+    </ol>
+{% endblock conteudo %}

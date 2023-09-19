@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        .navbar{
+            display: flex;
+            background-color: black;
+            justify-content: space-around;
+        }
+        .conteudo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+        .navbar>a{
+            width: 100%;
+            height: 30px;
+            padding: 12px;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar>a:hover{
+            background-color: white;
+            color: black;
+        }
+        button{
+            background-color: black;
+            color: white;
+            padding: 5px;
+            font-size: 18px;
+            margin: 2px;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        input{
+            font-size: 18px;
+        }
+        form{
+            margin: 20px;
+        }
+        summary{
+            display: flex;
+            flex-direction: column;
+            background-color:aquamarine;
+            padding: 1px;
+        }
+        summary:hover{
+            cursor: pointer;
+            background-color: beige;
+        }
+        details[open] summary{
+            background-color: beige;
+        }
+        details{
+            background-color: black;
+            margin: 2px;
+            padding: 2px;
+            width: 500px;
+        }
+        details>p{
+            color: white;
+        }
+        details>form>button{
+            background-color: white;
+            color: black;
+        }
+        ul>li{
+            color: white;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        details>button{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">LISTA PARA O ACAMPAMENTO</a> 
+        <a href="/itemDescricao">ITENS E DESCRIÇÕES</a>
+        <a href="/receita">RECEITAS</a>
+        <a href="/contatos">CONTATOS</a>
+        <a href="/listaTarefas">LISTA DE TAREFAS</a>
+    </div>
+    <div class="conteudo">
+        {% block conteudo %}
+        
+        {% endblock conteudo %}
+    </div>
+</body>
+</html>

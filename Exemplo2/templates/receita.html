@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <hr>
+    <form action="{{ url_for('receita') }}" method="POST" id="receita-form">
+        <label for="nome">Nome da receita:</label>
+        <input type="text" name="nome" required/>
+        
+        <div id="ingredientes-container" class="column">
+                <label for="ingredientes">Liste os ingredientes:</label>
+                <input type="text" name="ingredientes[]" required>
+        </div>
+        
+        <button type="button" id="adicionar-ingrediente">+</button>
+        <button type="submit">Enviar</button>
+    </form>
+    
+        {% for receita in listareceita %}
+            <details>
+                <summary>{{ receita.nome }}</summary>
+                <ul>
+                    {% for ingredientes in listaingredientes[loop.index0] %}
+                        <li>{{ ingredientes }}</li>
+                    {% endfor %}
+                </ul>
+            </details>
+        {% endfor %}
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const adicionarIngredienteBtn = document.getElementById("adicionar-ingrediente");
+            const ingredientesContainer = document.getElementById("ingredientes-container");
+            
+            adicionarIngredienteBtn.addEventListener("click", function () {
+                const novoCampoIngrediente = document.createElement("input");
+                novoCampoIngrediente.type = "text";
+                novoCampoIngrediente.name = "ingredientes[]";
+                novoCampoIngrediente.required = true;
+                ingredientesContainer.appendChild(novoCampoIngrediente);
+            });
+        });
+    </script>
+{% endblock conteudo %}

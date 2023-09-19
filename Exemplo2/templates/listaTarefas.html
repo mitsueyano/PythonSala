@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<style>
+    button {
+        font-size: 15px;
+    }
+    .flex {
+        display: flex;
+    }
+    .check{
+        width: 30px;
+    }
+    .check:hover{
+        cursor: pointer;
+    }
+    
+    
+</style>
+<hr>
+<form action="{{url_for('Tarefas')}}" method="POST">
+    <label for="tarefa">Adicione itens para a lista:</label>
+    <input type="text" name="tarefa" required="true" />
+    <button>Adicionar</button>
+</form>
+<ul>
+    {% for tarefa in listaTarefas %}
+    <div class="flex">
+        <details>
+            <summary>
+                <span class="tarefa">{{tarefa.tarefas}}</span>
+            </summary>
+        </details>
+        <input type="checkbox" class="check">
+    </div>
+    {% endfor %}
+</ul>
+
+
+{% endblock conteudo %}
